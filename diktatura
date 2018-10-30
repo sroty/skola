@@ -1,0 +1,184 @@
+<div id="vstup">
+  <h3>Zadejte text</h3>
+  <textarea id="text"></textarea>
+</div>  
+<div id="vystup">
+  <H3>Nový text</h3>
+  <button id="prevzit" onClick="prevzit()">Převzít</button>  
+  <button id="Y/I" onClick="ypsilon()">Y/I</button>
+  <button id="S/Z" onClick="sz()">S/Z</button>
+  <button id="E" onClick="memne()">MĚ/MNĚ</button>
+  <button id="backspace" onClick="backspace()">Backspace</button>
+  <button id="delete" onClick="del()">Delete</button>
+  <button id="smazat" onClick="smazat()">Smazat</button>
+  <button id="reseni" onClick="reseni()">Zobrazit řešení</button>
+  <p id="diktat"></p>
+</div>
+
+
+var puvodni;
+
+function prevzit()
+{
+  var text;
+  puvodni = document.getElementById("text").value;
+  text = document.getElementById("text").value;
+  if (text.length>0)
+    {
+      if (text.length<100) //kontrola jestli to bude krátký diktátek, nebo něco delšího
+        {
+          alert("Diktát je poměrně krátky, má méně než sto znaků. Jeho přesná délka je " +text.length);
+        }
+      else if ((text.length>=100) && (text.length<200))
+        {
+          alert("Diktát je středního rozsahu. Jeho přesná délka je " +text.length);
+        }
+      else
+        {
+          alert("Tak to už je pan diktát. Jeho přesná délka je " +text.length);
+        }
+      
+      document.getElementById("diktat").innerHTML=text;
+    }
+  else
+    {
+      alert("Není zadán žádný text!");
+    }
+}  
+function ypsilon()
+{
+  var text;
+  text=document.getElementById("diktat").innerHTML;
+  if (text.indexOf("y"|| "Y" || "ý" || "Ý" || "i" || "I" || "í" || "Í") > -1)
+    {
+      text=text.replace(/y/ig,"_");
+      text=text.replace(/ý/ig,"_");
+      text=text.replace(/i/ig,"_");
+      text=text.replace(/í/ig,"_");
+      document.getElementById("diktat").innerHTML=text;
+    } 
+  else
+    {
+      alert("Žádné Y/I se v textu nenachází");
+    }
+}
+function sz()
+{
+  var text;
+  text=document.getElementById("diktat").innerHTML;
+  if (text.indexOf("s" || "S" || "z" || "Z") > -1)
+    {
+      text=text.replace(/s/ig,"_");
+      text=text.replace(/z/ig,"_");
+      document.getElementById("diktat").innerHTML=text;
+    }
+  else
+    {
+      alert("Žádné S/Z se v textu nenachází");
+    }
+}
+function memne()
+{
+  var text;
+  text=document.getElementById("diktat").innerHTML;
+  if (text.indexOf("mě" || "Mě" || "mně" || "Mně") > -1)
+    {
+      text=text.replace(/mě/ig,"m__");
+      text=text.replace(/mně/ig,"m__");
+      document.getElementById("diktat").innerHTML=text;
+    }
+  else
+    {
+      alert("Žádné Mě/Mně se v textu nenachází");
+    }
+}
+function backspace() 
+{
+  var text;
+  text=document.getElementById("diktat").innerHTML;
+  if (text.length==0)
+    {
+    alert("Už není co mazat!"); //když nebude nic tak přijde upozornění
+    }
+  else
+    {
+    text=text.substring(0, text.length - 1); 
+    document.getElementById("diktat").innerHTML=text;
+      //vybere se znak od nuly do posledního -1, ten se zkopíruje a a vloží.
+      //Tím dojde k postupnému mazání od konce.
+    }
+}
+function del()
+{
+  var text;
+  text=document.getElementById("diktat").innerHTML;
+  if (text.length==0)
+    {
+    alert("Už není co mazat!");
+    }
+  else
+    {
+    text=text.substring(1,text.length);
+    document.getElementById("diktat").innerHTML=text;
+      //vybere se znak od 1 do posledního, ten se zkopíruje a a vloží.
+      //Tím dojde k postupnému mazání od začátku.
+    }
+}
+function smazat()
+{
+  var text;
+  text=document.getElementById("diktat").innerHTML;
+  if (text.length==0)
+    {
+      alert("Ty mě šidíš! Vždyť tam nic není");
+    }
+  else
+    {
+      if (confirm("Opravdu chcete diktát smazat?"))
+        {
+          alert("Nyní se diktát smaže.");
+          text="";
+        }
+      else
+        {
+          alert("Diktát zůstane jak je.");
+        }
+    }
+  document.getElementById("diktat").innerHTML=text;
+}
+function reseni()
+{
+  var text;
+  var Y,YD,I,ID,S,Z,ME,MNE; //musí být text v proměnné aby se dala použít funkce fontcolor()
+  
+  Y="Y";
+  YD="Ý";
+  I="I";
+  ID="Í";
+  S="S";
+  Z="Z";
+  ME="MĚ";
+  MNE="MNĚ";
+  
+  text=document.getElementById("diktat").innerHTML;
+  if (text != puvodni)
+    {
+      text = puvodni;
+      text=text.replace(/y/ig,Y.fontcolor("red"));
+      text=text.replace(/ý/ig,YD.fontcolor("red"));
+      text=text.replace(/i/ig,I.fontcolor("red"));
+      text=text.replace(/í/ig,ID.fontcolor("red"));
+      
+      text=text.replace(/s/ig,S.fontcolor("red"));
+      text=text.replace(/z/ig,Z.fontcolor("red"));
+      
+      text=text.replace(/mě/ig,ME.fontcolor("red"));
+      text=text.replace(/mně/ig,MNE.fontcolor("red"));
+      
+      document.getElementById("diktat").innerHTML=text;
+    }
+  else
+    {
+      alert("Není co opravovat");
+    }
+}
