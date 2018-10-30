@@ -1,0 +1,112 @@
+<input id="clen1" value="člen"><br>
+<input id="clen2" value="člen"><br>
+<button onClick=soucet()>součet</button>
+<button onClick=rozdil()>rozdíl</button>
+<br>
+<button onClick=soucin()>součin</button>
+<button onClick=podil()>podíl</button>
+<br>
+<input id="vysledek" value="Správný výsledek" disabled="true">
+<button onClick=NeniCislo()>Kontrola</button> 
+
+<!--tlačítko Kontrola, pro předběžnou kontrolu funkce NeniCislo() později ztrácí smysl -->
+
+
+
+
+function soucet()
+{
+  var clen1, clen2;
+  clen1=document.getElementById("clen1").value;
+  clen2=document.getElementById("clen2").value;
+  if (isNaN(clen1)==false && isNaN(clen2)==false) //kontrola, jestli je číslo
+    {
+    clen1=Number(clen1); //nutno přetypovat
+    clen2=Number(clen2);
+    document.getElementById("vysledek").value=clen1+clen2;
+    }
+    else
+    {
+      //alert("Někde jste nezadali číslo");
+      NeniCislo(); //volání této funkce jako bonus na závěr
+    }
+}
+
+function rozdil()
+{
+  var clen1, clen2;
+  clen1=document.getElementById("clen1").value;
+  clen2=document.getElementById("clen2").value;
+  if (isNaN(clen1)==false && isNaN(clen2)==false)
+    {
+    clen1=Number(clen1); //nutno přetypovat
+    clen2=Number(clen2);
+    document.getElementById("vysledek").value=clen1-clen2;
+    }
+    else
+    {
+      //alert("Někde jste nezadali číslo");
+      NeniCislo();
+    }
+}
+
+function soucin()
+{
+  var clen1, clen2;
+  clen1=document.getElementById("clen1").value;
+  clen2=document.getElementById("clen2").value;
+  if (isNaN(clen1)==false && isNaN(clen2)==false)
+    {
+    clen1=Number(clen1); //nutno přetypovat
+    clen2=Number(clen2);
+    document.getElementById("vysledek").value=clen1*clen2;
+    }
+    else
+    {
+      //alert("Někde jste nezadali číslo");
+      NeniCislo(); //volání této funkce jako bonus na závěr
+    }
+}
+
+function podil()
+{
+  var clen1, clen2, vysledek;
+  clen1=document.getElementById("clen1").value;
+  clen2=document.getElementById("clen2").value;
+  if (isNaN(clen1)==false && isNaN(clen2)==false) 
+    {
+    clen1=Number(clen1); //nutno přetypovat
+    clen2=Number(clen2);
+      if (clen2 != 0)
+        {
+        vysledek=clen1/clen2;  
+        vysledek=vysledek.toFixed(2);
+        document.getElementById("vysledek").value=vysledek; //clen1/clen2;
+        }
+        else
+        {
+          alert("Nelze dělit nulou");
+        }
+    }
+    else
+    {
+      //alert("Někde jste nezadali číslo");
+      NeniCislo(); //volání této funkce jako bonus na závěr
+    }
+}
+
+function NeniCislo() //funkce pro ukázku volání funkce
+{
+  if (isNaN(document.getElementById("clen1").value)==true && isNaN(document.getElementById("clen2").value)==true) //kdyby oba nebyly čísla
+    {
+      alert("Ani jeden člen není číslo");
+    }
+  else if (isNaN(document.getElementById("clen1").value)==true && isNaN(document.getElementById("clen2").value)==false) //kdyby jednička nebyla číslo
+    {
+      alert("První člen není číslo");
+    }
+  else
+    {
+      alert("Druhý člen není číslo");
+    }  
+}
