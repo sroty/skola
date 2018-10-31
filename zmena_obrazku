@@ -1,0 +1,48 @@
+<div id="neco">
+  <p class="text">Programování</p>
+  <h1 class="text" id="jmeno"> Rick Sanchez </h1>
+  
+  <img id="obrazek" src="https://vignette.wikia.nocookie.net/rickandmorty/images/a/a6/Rick_Sanchez.png/revision/latest?cb=20160923150728" height="300px"></img>
+
+<br>
+  <button onClick=rick()>Rick</button>
+  <button onClick=homer()>Homer</button>
+  <button onClick=tux()>Tux</button>
+  <button onClick=droid()>Android</button>
+</div>
+
+
+
+#neco{
+  position: relative;
+  left: 40%;
+  background-color: red;
+  width: 300px;
+  text-align: center;
+}
+
+.text{
+  fotn-family: Times New Roman, Times, serif;
+  
+}
+
+#jmeno{
+  color: white;
+}
+
+
+function homer(){
+  document.getElementById("obrazek").src="https://previews.123rf.com/images/chutimakuanamon/chutimakuanamon1705/chutimakuanamon170500260/79121847-homer-simpson-thinking-illustration.jpg";
+}
+
+function rick(){
+  document.getElementById("obrazek").src="https://vignette.wikia.nocookie.net/rickandmorty/images/a/a6/Rick_Sanchez.png/revision/latest?cb=20160923150728";
+}
+
+function tux(){
+  document.getElementById("obrazek").src="https://cdn.pixabay.com/photo/2017/01/31/15/33/linux-2025130_960_720.png";
+}
+
+function droid(){
+  document.getElementById("obrazek").src="https://sdtimes.com/wp-content/uploads/2018/03/2NqZJYQI_400x400.png";
+}
