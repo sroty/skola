@@ -117,26 +117,26 @@ function smaz(){
 
 ------------------------------------------------------end-----------------------------------------------------
 
-<!-- <div>
+ <div>
   <button onClick="zmena()">ZMĚNIT</button>
   <button onClick="zelva()">ŽELVA</button>
   <button onClick="pocitac()">POČÍTAČ</button>
   <button onClick="jablko()">JABLKO</button>  
-</div>  -->
+</div> 
 
-<!--<div>
+<div>
   <img id="obrazek" src="https://www.rybarskyrozcestnik.cz/wp-content/uploads/2016/02/trachemys-scripta-zelva-nadherna2.jpg">
 </div>  -->
 
-<!--<div>
+<div>
   <button onClick="seznam()">Zobrazit seznam </button><br>
   <p id="vypis"></p>
 </div>  -->
 
-<!--<div>
+<div>
   <input id="vstup"></input>
 <button onClick="prevzit()">Převzít</button>
 <button onClick="smaz()">Smaž</button>
 <p>Historie hledání</p>
 <p id="historie"></p>
-</div>  -->
+</div>  
