@@ -1,0 +1,73 @@
+<input id="znacka" ></input>
+<input id="model" ></input>
+<input id="hmotnost" ></input>
+<button onClick="pridat()">Přidat</button><br>
+<button onClick="preber()">Souhrn</button>
+<button onClick="celkem()">Celková hmotnost</button>
+<input id="soucet" disabled ></input>
+<p id="vypis"></p>
+
+-------------------------------------end----------------------------------------------
+
+var seznam = [];
+
+function pridat() {
+  var auto = { znacka, model, hmotnost };
+
+  auto.znacka = document.getElementById("znacka").value;
+  auto.model = document.getElementById("model").value;
+  auto.hmotnost = document.getElementById("hmotnost").value;
+
+  seznam[seznam.length] = auto;
+  vypsat();
+}
+
+function vypsat() {
+  //document.getElementById("vypis").innerHTML = seznam.join("<br>"); nefunguje s objetky
+
+  var i;
+  var text = "";
+
+  for (i = 0; i < seznam.length; i++) {
+    text =
+      text +
+      seznam[i].znacka +
+      " " +
+      seznam[i].model +
+      " " +
+      seznam[i].hmotnost +
+      "<br>";
+  }
+  document.getElementById("vypis").innerHTML = text;
+}
+
+function celkem(){
+  var i;
+  var hmotnost = 0;
+  
+  for(i=0; i<seznam.length; i++){
+    hmotnost = hmotnost + Number(seznam[i].hmotnost);
+  }
+  
+  document.getElementById("soucet").value = hmotnost;
+  return hmotnost;
+}
+
+
+function preber(){
+  var i;
+  var text = "";
+
+  for (i = 0; i < seznam.length; i++) {
+    text =
+      text +
+      seznam[i].znacka +
+      " " +
+      seznam[i].model +
+      " " +
+      seznam[i].hmotnost +
+      "\n";
+  }
+  
+  alert(text + "\n" + "celková hmotnost: " + celkem()+"kg");
+}
